@@ -419,7 +419,7 @@ const facilitatorClient = new HTTPFacilitatorClient(facilitator);
 
 | Tier | Cost | Settlements | API Key |
 |------|------|-------------|---------|
-| Free | $0/month | Up to 1,000/month | Not required |
+| Free | $0/month | Up to 10,000/month | Not required |
 | Production | $0.001/transaction | Unlimited (credit-based) | Required |
 
 For production, create a merchant account at [merchant.payai.network](https://merchant.payai.network) and set:
