@@ -30,8 +30,10 @@ x402 is an open payment protocol that revives HTTP 402 "Payment Required" to ena
 ### Server (Express)
 
 ```bash
-npx @payai/x402-express-starter@latest my-server
+npm install express dotenv @payai/facilitator @x402/core @x402/express @x402/svm
 ```
+
+Full guide: [Express quickstart](https://docs.payai.network/x402/servers/typescript/express)
 
 Set `.env`:
 ```env
@@ -88,8 +90,10 @@ app.listen(4021, () => console.log("Server listening at http://localhost:4021"))
 ### Client (Fetch)
 
 ```bash
-npx @payai/x402-fetch-starter@latest my-client
+npm install dotenv @solana/kit @scure/base @x402/fetch @x402/svm
 ```
+
+Full guide: [Fetch quickstart](https://docs.payai.network/x402/clients/typescript/fetch)
 
 Set `.env`:
 ```env
@@ -135,8 +139,10 @@ main();
 ### Hono
 
 ```bash
-npx @payai/x402-hono-starter@latest my-server
+npm install hono @hono/node-server dotenv @payai/facilitator @x402/core @x402/hono @x402/svm
 ```
+
+Full guide: [Hono quickstart](https://docs.payai.network/x402/servers/typescript/hono)
 
 ```typescript
 import { config } from "dotenv";
@@ -177,8 +183,11 @@ serve({ fetch: app.fetch, port: 4021 });
 ### Next.js
 
 ```bash
-npx @payai/x402-next-starter@latest my-app
+npx create-next-app@latest my-app --typescript --app
+npm install @payai/facilitator @x402/core @x402/next @x402/paywall @x402/svm
 ```
+
+Full guide: [Next.js quickstart](https://docs.payai.network/x402/servers/typescript/nextjs)
 
 Next.js uses two approaches:
 
@@ -244,6 +253,8 @@ export const GET = withX402(
 pip install x402 fastapi uvicorn python-dotenv pydantic
 ```
 
+Full guide: [FastAPI quickstart](https://docs.payai.network/x402/servers/python/fastapi)
+
 ```python
 import os
 from dotenv import load_dotenv
@@ -287,6 +298,8 @@ async def get_weather():
 ```bash
 go get github.com/coinbase/x402/go github.com/gin-gonic/gin
 ```
+
+Full guide: [Gin quickstart](https://docs.payai.network/x402/servers/go/gin)
 
 ```go
 package main
@@ -343,8 +356,10 @@ func main() {
 ### Axios (TypeScript)
 
 ```bash
-npx @payai/x402-axios-starter@latest my-client
+npm install axios @solana/kit @scure/base @x402/axios @x402/svm
 ```
+
+Full guide: [Axios quickstart](https://docs.payai.network/x402/clients/typescript/axios)
 
 ```typescript
 import { x402Client, wrapAxiosWithPayment } from "@x402/axios";
@@ -367,6 +382,8 @@ console.log(response.data);
 pip install x402 httpx
 ```
 
+Full guide: [httpx quickstart](https://docs.payai.network/x402/clients/python/httpx)
+
 ```python
 from x402 import x402Client
 from x402.http.clients import x402HttpxClient
@@ -383,6 +400,8 @@ async with x402HttpxClient(client) as http:
 
 ### Go (net/http)
 
+Full guide: [Go net/http quickstart](https://docs.payai.network/x402/clients/go/http)
+
 ```go
 svmSigner, _ := svmsigners.NewClientSignerFromPrivateKey(svmPrivateKey)
 client := x402.Newx402Client()
@@ -397,7 +416,7 @@ resp, _ := wrappedClient.Do(req)
 
 ## PayAI Facilitator
 
-The PayAI facilitator handles payment verification and settlement. All starter templates include `@payai/facilitator` which connects automatically.
+The PayAI facilitator handles payment verification and settlement. In TypeScript, `@payai/facilitator` exports a ready-made facilitator config:
 
 ```typescript
 import { facilitator } from "@payai/facilitator";
@@ -531,15 +550,20 @@ Routes follow the format `"METHOD /path"`:
 }
 ```
 
-### Starter Templates
+### Quickstart Guides
 
-| Template | Command |
-|----------|---------|
-| Express server | `npx @payai/x402-express-starter@latest my-server` |
-| Hono server | `npx @payai/x402-hono-starter@latest my-server` |
-| Next.js fullstack | `npx @payai/x402-next-starter@latest my-app` |
-| Fetch client | `npx @payai/x402-fetch-starter@latest my-client` |
-| Axios client | `npx @payai/x402-axios-starter@latest my-client` |
+| Guide | Link |
+|-------|------|
+| Express server | [docs.payai.network/x402/servers/typescript/express](https://docs.payai.network/x402/servers/typescript/express) |
+| Hono server | [docs.payai.network/x402/servers/typescript/hono](https://docs.payai.network/x402/servers/typescript/hono) |
+| Next.js | [docs.payai.network/x402/servers/typescript/nextjs](https://docs.payai.network/x402/servers/typescript/nextjs) |
+| FastAPI (Python) | [docs.payai.network/x402/servers/python/fastapi](https://docs.payai.network/x402/servers/python/fastapi) |
+| Flask (Python) | [docs.payai.network/x402/servers/python/flask](https://docs.payai.network/x402/servers/python/flask) |
+| Gin (Go) | [docs.payai.network/x402/servers/go/gin](https://docs.payai.network/x402/servers/go/gin) |
+| Fetch client | [docs.payai.network/x402/clients/typescript/fetch](https://docs.payai.network/x402/clients/typescript/fetch) |
+| Axios client | [docs.payai.network/x402/clients/typescript/axios](https://docs.payai.network/x402/clients/typescript/axios) |
+| httpx client (Python) | [docs.payai.network/x402/clients/python/httpx](https://docs.payai.network/x402/clients/python/httpx) |
+| Go net/http client | [docs.payai.network/x402/clients/go/http](https://docs.payai.network/x402/clients/go/http) |
 
 ## Testing
 
