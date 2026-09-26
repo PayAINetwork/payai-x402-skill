@@ -296,7 +296,7 @@ async def get_weather():
 ### Gin (Go)
 
 ```bash
-go get github.com/coinbase/x402/go github.com/gin-gonic/gin
+go get github.com/x402-foundation/x402/go/v2 github.com/gin-gonic/gin
 ```
 
 Full guide: [Gin quickstart](https://docs.payai.network/x402/servers/go/gin)
@@ -309,9 +309,9 @@ import (
 	"os"
 	"time"
 
-	x402http "github.com/coinbase/x402/go/http"
-	ginmw "github.com/coinbase/x402/go/http/gin"
-	svm "github.com/coinbase/x402/go/mechanisms/svm/exact/server"
+	x402http "github.com/x402-foundation/x402/go/v2/http"
+	ginmw "github.com/x402-foundation/x402/go/v2/http/gin"
+	svm "github.com/x402-foundation/x402/go/v2/mechanisms/svm/exact/server"
 	ginfw "github.com/gin-gonic/gin"
 )
 
@@ -436,12 +436,13 @@ const facilitatorClient = new HTTPFacilitatorClient(facilitator);
 
 ### Pricing
 
-| Tier | Cost | Settlements | API Key |
-|------|------|-------------|---------|
-| Free | $0/month | Up to 10,000/month | Not required |
-| Production | $0.001/transaction | Unlimited (credit-based) | Required |
+- **Free:** 1,000 free credits per receiving wallet (lifetime, not monthly). No API key needed for ordinary exact payments. Testnet settlements are free.
+- **Beyond the free credits:** each settlement costs the network's on-chain gas plus 30%, paid in credits at $0.001 per credit. Requires a merchant account and API key.
+- Solana batch settlement requires an API key from the first call.
 
-For production, create a merchant account at [merchant.payai.network](https://merchant.payai.network) and set:
+Current per-network rates: [facilitator.payai.network/pricing](https://facilitator.payai.network/pricing). Details: [Facilitator Pricing](https://docs.payai.network/x402/facilitators/pricing).
+
+To go beyond the free credits, create a merchant account at [merchant.payai.network](https://merchant.payai.network) and set:
 
 ```env
 PAYAI_API_KEY_ID=your-key-id
@@ -452,6 +453,8 @@ PAYAI_API_KEY_SECRET=your-key-secret
 
 | Network | CAIP-2 ID |
 |---------|-----------|
+| Arbitrum | `eip155:42161` |
+| Arbitrum Sepolia | `eip155:421614` |
 | Avalanche | `eip155:43114` |
 | Avalanche Fuji | `eip155:43113` |
 | Base | `eip155:8453` |
@@ -586,7 +589,7 @@ Available Solana test endpoints:
 ## Resources
 
 - [PayAI Documentation](https://docs.payai.network)
-- [x402 Protocol Repository](https://github.com/coinbase/x402)
+- [x402 Protocol Repository](https://github.com/x402-foundation/x402)
 - [PayAI GitHub](https://github.com/PayAINetwork)
 - [PayAI Facilitator](https://facilitator.payai.network)
 - [Echo Merchant (free testing)](https://x402.payai.network)
